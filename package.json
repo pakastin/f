@@ -1,0 +1,19 @@
+{
+  "name": "f",
+  "version": "0.0.1",
+  "description": "FRZR lite",
+  "main": "dist/f.js",
+  "scripts": {
+    "dev": "node watch",
+    "build": "rollup -n f -f iife src/index.js -o dist/f.js",
+    "uglify": "uglifyjs dist/f.js -cmo dist/f.min.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juha Lindstedt",
+  "license": "ISC",
+  "devDependencies": {
+    "chokidar-cli": "~1.2.0",
+    "rollup": "~0.25.4",
+    "uglify-js": "~2.6.2"
+  }
+}
