@@ -1,4 +1,6 @@
 
+import { mount } from './index';
+
 export function el (tagName, attrs) {
   var element = document.createElement(tagName);
 
@@ -7,7 +9,7 @@ export function el (tagName, attrs) {
   }
 
   for (var i = 2; i < arguments.length; i++) {
-    element.appendChild(arguments[i]);
+    mount(element, arguments[i]);
   }
 
   return element;

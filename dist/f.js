@@ -9,7 +9,7 @@
     }
 
     for (var i = 2; i < arguments.length; i++) {
-      element.appendChild(arguments[i]);
+      mount(element, arguments[i]);
     }
 
     return element;
@@ -59,7 +59,7 @@
     this.lookup = newLookup;
   }
 
-  function mount$1 (parent, child) {
+  function mount (parent, child) {
     if (child.el) {
       (parent.el || parent).appendChild(child.el);
       child.mount && child.mount();
@@ -68,7 +68,7 @@
     }
   }
 
-  function mountBefore$1 (parent, child, before) {
+  function mountBefore (parent, child, before) {
     if (child.el) {
       (parent.el || parent).insertBefore(child.el, before.el || before);
       child.mount && child.mount();
@@ -77,7 +77,7 @@
     }
   }
 
-  function setChildren$1 (parent, children) {
+  function setChildren (parent, children) {
     var traverse = parent.firstChild;
 
     for (var i = 0; i < children.length; i++) {
@@ -106,8 +106,8 @@
   exports.el = el;
   exports.list = list;
   exports.List = List;
-  exports.mount = mount$1;
-  exports.mountBefore = mountBefore$1;
-  exports.setChildren = setChildren$1;
+  exports.mount = mount;
+  exports.mountBefore = mountBefore;
+  exports.setChildren = setChildren;
 
 }((this.f = this.f || {})));

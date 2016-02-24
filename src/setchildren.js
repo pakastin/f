@@ -1,4 +1,6 @@
 
+import { mount, mountBefore } from './index';
+
 export function setChildren (parent, children) {
   var traverse = parent.firstChild;
 

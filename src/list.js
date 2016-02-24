@@ -1,4 +1,6 @@
 
+import { setChildren } from './index';
+
 export function list (View, key) {
   return new List(View, key);
 }
