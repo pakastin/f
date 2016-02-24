@@ -1,33 +1,40 @@
 
-import { unmount, setChildren } from './index';
+import { mount, unmount, setChildren } from './index';
 
-export function list (View, key) {
-  return new List(View, key);
+export function list (View, key, options) {
+  return new List(View, key, options);
 }
 
-export function List (View, key) {
+export function List (View, key, options) {
   this.View = View;
   this.key = key;
   this.lookup = key != null ? {} : [];
+  this.views = [];
+
+  if (options) {
+    this.onupdate = options.update;
+    this.onupdated = options.updated;
+  }
 }
 
-List.prototype.update = function (parent, data) {
+List.prototype.update = function (data) {
   var View = this.View;
   var key = this.key;
   var lookup = this.lookup;
   var newLookup = {};
-  var views = new Array(data.length);
+  var views = this.views = new Array(data.length);
 
   for (var i = 0; i < data.length; i++) {
     var item = data[i];
     var id = key != null ? item[key] : i;
     var view = lookup[id] || new View(item);
-
+    view.update && view.update(item);
     views[i] = view;
 
     newLookup[id] = view;
-    view.update && view.update(item);
   }
+
+  this.onupdate && this.onupdate(views);
 
   for (var id in lookup) {
     if (!newLookup[id]) {
@@ -35,22 +42,29 @@ List.prototype.update = function (parent, data) {
         lookup[id].el.removing = true;
         scheduleRemove(parent, lookup[id]);
       } else {
-        unmount(parent, lookup[id]);
+        this.parent && unmount(this.parent, lookup[id]);
       }
     }
   }
 
-  setChildren(parent, views);
-
-  for (var i = 0; i < data.length; i++) {
-    view.updated && views[i].updated(data[i]);
+  if (this.parent) {
+    setChildren(this.parent, views);
   }
+
+  for (var i = 0; i < views.length; i++) {
+    var item = data[i];
+    var view = views[i];
+
+    view.updated && view.updated(item);
+  }
+
+  this.onupdated && this.onupdated(views);
 
   this.lookup = newLookup;
 }
 
 function scheduleRemove (parent, child) {
-  child.remove(function () {
+  this.parent && child.remove(function () {
     unmount(parent, child);
   });
 }

@@ -8,6 +8,7 @@
     "deploy": "gh-pages -d dist",
     "build": "rollup -n f -f iife src/index.js -o dist/f.js",
     "uglify": "uglifyjs dist/f.js -cmo dist/f.min.js",
+    "postpublish": "npm run deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Juha Lindstedt",

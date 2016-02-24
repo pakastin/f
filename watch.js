@@ -2,7 +2,6 @@
 var cp = require('child_process');
 
 exec('npm', 'run', 'build');
-exec('npm', 'run', 'build');
 exec('chokidar', 'src/**/*.js', '-c', 'npm run build');
 exec('chokidar', 'dist/f.js', '-c', 'npm run uglify');
 
