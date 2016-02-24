@@ -47,9 +47,7 @@
       if (!newLookup[id]) {
         if (lookup[id].remove) {
           lookup[id].el.removing = true;
-          lookup[id].remove(function () {
-            unmount(parent, lookup[id]);
-          });
+          scheduleRemove(parent, lookup[id]);
         } else {
           unmount(parent, lookup[id]);
         }
@@ -63,6 +61,12 @@
     }
 
     this.lookup = newLookup;
+  }
+
+  function scheduleRemove (parent, child) {
+    child.remove(function () {
+      unmount(parent, child);
+    });
   }
 
   function mount (parent, child) {
