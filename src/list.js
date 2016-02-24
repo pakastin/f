@@ -1,5 +1,5 @@
 
-import { setChildren } from './index';
+import { unmount, setChildren } from './index';
 
 export function list (View, key) {
   return new List(View, key);
@@ -31,8 +31,14 @@ List.prototype.update = function (parent, data) {
 
   for (var id in lookup) {
     if (!newLookup[id]) {
-      lookup[id].el.removing = true;
-      lookup[id].remove();
+      if (lookup[id].remove) {
+        lookup[id].el.removing = true;
+        lookup[id].remove(function () {
+          unmount(parent, lookup[id]);
+        });
+      } else {
+        unmount(parent, lookup[id]);
+      }
     }
   }
 

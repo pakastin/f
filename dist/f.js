@@ -45,8 +45,14 @@
 
     for (var id in lookup) {
       if (!newLookup[id]) {
-        lookup[id].el.removing = true;
-        lookup[id].remove();
+        if (lookup[id].remove) {
+          lookup[id].el.removing = true;
+          lookup[id].remove(function () {
+            unmount(parent, lookup[id]);
+          });
+        } else {
+          unmount(parent, lookup[id]);
+        }
       }
     }
 
@@ -74,6 +80,15 @@
       child.mount && child.mount();
     } else {
       (parent.el || parent).insertBefore(child, before.el || before);
+    }
+  }
+
+  function unmount (parent, child) {
+    if (child.el) {
+      (parent.el || parent).removeChild(child.el);
+      child.unmount && child.unmount();
+    } else {
+      (parent.el || parent).removeChild(child);
     }
   }
 
@@ -108,6 +123,7 @@
   exports.List = List;
   exports.mount = mount;
   exports.mountBefore = mountBefore;
+  exports.unmount = unmount;
   exports.setChildren = setChildren;
 
 }((this.f = this.f || {})));

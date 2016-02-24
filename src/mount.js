@@ -16,3 +16,12 @@ export function mountBefore (parent, child, before) {
     (parent.el || parent).insertBefore(child, before.el || before);
   }
 }
+
+export function unmount (parent, child) {
+  if (child.el) {
+    (parent.el || parent).removeChild(child.el);
+    child.unmount && child.unmount();
+  } else {
+    (parent.el || parent).removeChild(child);
+  }
+}
