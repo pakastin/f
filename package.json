@@ -3,6 +3,7 @@
   "version": "0.0.5",
   "description": "FRZR lite",
   "main": "dist/f.js",
+  "jsnext:main": "src/index.js",
   "scripts": {
     "dev": "node watch",
     "deploy": "gh-pages -d dist",
