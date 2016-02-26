@@ -64,7 +64,7 @@ List.prototype.update = function (data) {
 }
 
 function scheduleRemove (parent, child) {
-  this.parent && child.remove(function () {
+  child.remove(function () {
     unmount(parent, child);
   });
 }
