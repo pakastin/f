@@ -40,7 +40,7 @@ List.prototype.update = function (data) {
     if (!newLookup[id]) {
       if (lookup[id].remove) {
         lookup[id].el.removing = true;
-        scheduleRemove(parent, lookup[id]);
+        scheduleRemove(this.parent, lookup[id]);
       } else {
         this.parent && unmount(this.parent, lookup[id]);
       }
