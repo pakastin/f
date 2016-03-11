@@ -15,20 +15,16 @@
     return element;
   }
 
-  function list (View, key, options) {
-    return new List(View, key, options);
+  function list (View, key, initData) {
+    return new List(View, key, initData);
   }
 
-  function List (View, key, options) {
+  function List (View, key, initData) {
     this.View = View;
     this.key = key;
     this.lookup = key != null ? {} : [];
     this.views = [];
-
-    if (options) {
-      this.onupdate = options.update;
-      this.onupdated = options.updated;
-    }
+    this.initData = initData;
   }
 
   List.prototype.update = function (data) {
@@ -41,20 +37,19 @@
     for (var i = 0; i < data.length; i++) {
       var item = data[i];
       var id = key != null ? item[key] : i;
-      var view = lookup[id] || new View(item);
+      var view = lookup[id] || new View(this.initData);
+
       view.update && view.update(item);
       views[i] = view;
 
       newLookup[id] = view;
     }
 
-    this.onupdate && this.onupdate(views);
-
     for (var id in lookup) {
       if (!newLookup[id]) {
         if (lookup[id].remove) {
           lookup[id].el.removing = true;
-          scheduleRemove(parent, lookup[id]);
+          scheduleRemove(this.parent, lookup[id]);
         } else {
           this.parent && unmount(this.parent, lookup[id]);
         }
@@ -72,13 +67,11 @@
       view.updated && view.updated(item);
     }
 
-    this.onupdated && this.onupdated(views);
-
     this.lookup = newLookup;
   }
 
   function scheduleRemove (parent, child) {
-    this.parent && child.remove(function () {
+    child.remove(function () {
       unmount(parent, child);
     });
   }
