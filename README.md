@@ -1,6 +1,15 @@
 # f
 Turboboosted view library in under 2 KB. This will probably eventually replace [FRZR](https://frzr.js.org), but for now it's a separate project.
 
+## Install:
+```
+npm install @pakastin/f
+```
+
+## Download:
+- https://pakastin.github.io/f/f.js
+- https://pakastin.github.io/f/f.min.js
+
 ## Some simple examples:
 - https://jsfiddle.net/pakastin/8ormrkf9/
 - https://jsfiddle.net/pakastin/h2h36xm5/
