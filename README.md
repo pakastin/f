@@ -13,6 +13,7 @@ npm install @pakastin/f
 ## Some simple examples:
 - https://jsfiddle.net/pakastin/8ormrkf9/
 - https://jsfiddle.net/pakastin/h2h36xm5/
+- https://jsfiddle.net/pakastin/cbL56sz0/
 
 ## f.el(tagName, attributes, children...)
 Creates a HTML element:
@@ -45,7 +46,7 @@ item.update('Hello world!');
 f.mount(document.body, item); // <body><p>Hello world!</p></body>
 ```
 ## f.list(Component, key, initData);
-Previous example makes a lot more sense now:
+Automatically inserts, removes and even reorders components. Previous example makes a lot more sense now:
 ```js
 var list = f.list(Item);
 f.mount(document.body, list);
