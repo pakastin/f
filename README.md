@@ -1,5 +1,5 @@
 # f
-Turboboosted view library under 2 KB. This will probably eventually replace [FRZR](https://frzr.js.org), but for now it's a separate project.
+Turboboosted view library in under 2 KB. This will probably eventually replace [FRZR](https://frzr.js.org), but for now it's a separate project.
 
 ## f.el(tagName, attributes, children...)
 Creates a HTML element:
