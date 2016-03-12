@@ -2,8 +2,8 @@
 Turboboosted view library in under 2 KB. This will probably eventually replace [FRZR](https://frzr.js.org), but for now it's a separate project.
 
 ## Some simple examples:
-- https://jsfiddle.net/pakastin/h2h36xm5/
 - https://jsfiddle.net/pakastin/8ormrkf9/
+- https://jsfiddle.net/pakastin/h2h36xm5/
 
 ## f.el(tagName, attributes, children...)
 Creates a HTML element:
