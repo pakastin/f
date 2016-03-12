@@ -31,7 +31,7 @@ var item = new Item();
 item.update('Hello world!');
 f.mount(document.body, item); // <body><p>Hello world!</p></body>
 ```
-You can use whatever style you like, just define `el`:
+You can use whatever style you like, just return a object with `el`:
 ```js
 function item () {
   var el = f.el('p');
