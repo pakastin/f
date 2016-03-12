@@ -23,7 +23,7 @@ List.prototype.update = function (data) {
   for (var i = 0; i < data.length; i++) {
     var item = data[i];
     var id = key != null ? item[key] : i;
-    var view = lookup[id] || new View(this.initData);
+    var view = lookup[id] || new View(this.initData, item);
 
     view.update && view.update(item);
     views[i] = view;
