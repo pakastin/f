@@ -44,7 +44,7 @@ var item = new Item();
 item.update('Hello world!');
 f.mount(document.body, item); // <body><p>Hello world!</p></body>
 ```
-## Creating lists:
+## f.list(Component, key, initData);
 Previous example makes a lot more sense now:
 ```js
 var list = f.list(Item);
