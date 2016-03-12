@@ -7,8 +7,8 @@ npm install @pakastin/f
 ```
 
 ## Download:
-- https://pakastin.github.io/f/f.js - development, ~4 KB before GZIP
-- https://pakastin.github.io/f/f.min.js - production, ~1.7 KB before GZIP
+- Development: https://pakastin.github.io/f/f.js (~4 KB before GZIP)
+- Production: https://pakastin.github.io/f/f.min.js (~1.7 KB before GZIP)
 
 ## Some simple examples:
 - https://jsfiddle.net/pakastin/8ormrkf9/
