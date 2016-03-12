@@ -15,6 +15,20 @@
     return element;
   }
 
+  function svg (tagName, attrs) {
+    var element = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+
+    for (var attr in attrs) {
+      element[attr] = attrs[attr];
+    }
+
+    for (var i = 2; i < arguments.length; i++) {
+      mount(element, arguments[i]);
+    }
+
+    return element;
+  }
+
   function list (View, key, initData) {
     return new List(View, key, initData);
   }
@@ -146,6 +160,7 @@
   }
 
   exports.el = el;
+  exports.svg = svg;
   exports.list = list;
   exports.List = List;
   exports.mount = mount;
