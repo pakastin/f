@@ -11,9 +11,9 @@ npm install @pakastin/f
 - Production: https://pakastin.github.io/f/f.min.js (~1.7 KB before GZIP)
 
 ## Some simple examples:
-- https://jsfiddle.net/pakastin/8ormrkf9/
-- https://jsfiddle.net/pakastin/h2h36xm5/
-- https://jsfiddle.net/pakastin/cbL56sz0/
+- Replacing table data: https://jsfiddle.net/pakastin/8ormrkf9/
+- Animating SVG: https://jsfiddle.net/pakastin/h2h36xm5/
+- Animating inserts/reorders/removes: https://jsfiddle.net/pakastin/a80srsmt/
 
 ## f.el(tagName, attributes, children...)
 Creates a HTML element:
