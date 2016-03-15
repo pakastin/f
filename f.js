@@ -1,5 +1,8 @@
-(function (exports) {
-  'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.f = global.f || {})));
+}(this, function (exports) { 'use strict';
 
   function el (tagName, attrs) {
     var element = document.createElement(tagName);
@@ -77,11 +80,7 @@
       if (!newLookup[id]) {
         var view = lookup[id];
         removed[removed.length] = view;
-        if (view.remove) {
-          view.el.removing = true;
-        } else {
-          view.removing = true;
-        }
+        view.el.removing = true;
       }
     }
 
@@ -200,4 +199,4 @@
   exports.unmount = unmount;
   exports.setChildren = setChildren;
 
-}((this.f = this.f || {})));
+}));
