@@ -2,7 +2,7 @@
 import { mount, mountBefore } from './index';
 
 export function setChildren (parent, children) {
-  var traverse = parent.firstChild;
+  var traverse = (parent.el || parent).firstChild;
 
   for (var i = 0; i < children.length; i++) {
     var child = children[i];
@@ -21,7 +21,7 @@ export function setChildren (parent, children) {
   while (traverse) {
     var next = traverse.nextSibling;
     if (!traverse.removing) {
-      parent.removeChild(traverse);
+      (parent.el || parent).removeChild(traverse);
     }
     traverse = next;
   }
