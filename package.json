@@ -7,17 +7,23 @@
   "scripts": {
     "dev": "node watch",
     "deploy": "gh-pages -d dist",
-    "build": "rollup -n f -f iife src/index.js -o dist/f.js",
+    "build": "rollup -n f -f umd src/index.js -o dist/f.js && npm run test",
     "uglify": "uglifyjs dist/f.js -cmo dist/f.min.js",
     "postpublish": "npm run deploy",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "rollup -n f -f cjs src/index.js -o test/f.js | browserify -t coverify test/test.js | tape-run | coverify"
   },
   "author": "Juha Lindstedt",
   "license": "ISC",
   "devDependencies": {
+    "assert": "~1.3.0",
     "chokidar-cli": "~1.2.0",
+    "coverify": "~1.4.1",
     "gh-pages": "~0.10.0",
+    "phantomjs": "~2.1.3",
     "rollup": "~0.25.4",
+    "tape": "~4.5.1",
+    "tape-run": "~2.1.3",
+    "testling": "~1.7.1",
     "uglify-js": "~2.6.2"
   }
 }

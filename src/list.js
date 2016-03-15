@@ -45,11 +45,7 @@ List.prototype.update = function (data, cb) {
     if (!newLookup[id]) {
       var view = lookup[id];
       removed[removed.length] = view;
-      if (view.remove) {
-        view.el.removing = true;
-      } else {
-        view.removing = true;
-      }
+      view.el.removing = true;
     }
   }
 
