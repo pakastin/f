@@ -1,5 +1,5 @@
 # f
-Turboboosted view library in under 2 KB and 100 % test coverage. This will probably eventually replace [FRZR](https://frzr.js.org), but for now it's a separate project.
+Turboboosted view library at 2 KB and 100 % test coverage. This will probably eventually replace [FRZR](https://frzr.js.org), but for now it's a separate project.
 
 [![Build Status](https://travis-ci.org/pakastin/f.svg?branch=master)](https://travis-ci.org/pakastin/f)
 
