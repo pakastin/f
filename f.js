@@ -80,7 +80,7 @@
         if (view.remove) {
           view.el.removing = true;
         } else {
-          this.parent && unmount(this.parent, view);
+          view.removing = true;
         }
       }
     }
@@ -106,7 +106,11 @@
 
     for (var i = 0; i < removed.length; i++) {
       var view = removed[i];
-      scheduleRemove(this.parent, view);
+      if (view.remove) {
+        this.parent && scheduleRemove(this.parent, view);
+      } else {
+        this.parent && unmount(this.parent, view);
+      }
     }
 
     return this;
