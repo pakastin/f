@@ -9,8 +9,8 @@ npm install @pakastin/f
 ```
 
 ## Download:
-- Development: https://pakastin.github.io/f/f.js (~4 KB before GZIP)
-- Production: https://pakastin.github.io/f/f.min.js (~1.7 KB before GZIP)
+- Development: https://pakastin.github.io/f/f.js (~4.5 KB before GZIP)
+- Production: https://pakastin.github.io/f/f.min.js (~2 KB before GZIP)
 
 ## Some simple examples:
 - Animating inserts/reorders/removes: https://jsfiddle.net/pakastin/a80srsmt/
