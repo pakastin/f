@@ -17,6 +17,7 @@ npm install @pakastin/f
 - Animating SVG: https://jsfiddle.net/pakastin/h2h36xm5/
 - Replacing table data with inserts/removes: https://jsfiddle.net/pakastin/cbL56sz0/
 - Replacing table data: https://jsfiddle.net/pakastin/8ormrkf9/
+- [@teropa](http://github.com/teropa)'s Metacircles fork: http://pakastin.github.io/metacircles/
 
 ## f.el(tagName, attributes, children...)
 Creates a HTML element:
