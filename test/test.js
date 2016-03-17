@@ -156,10 +156,10 @@ test('list update with key', function (t) {
     { _id: 1 },
     { _id: 2 },
     { _id: 3 }
-  ], function (ops) {
-    t.equals(ops.added.length, 2, 'added count');
-    t.equals(ops.updated.length, 1, 'updated count');
-    t.equals(ops.removed.length, 1, 'removed count');
+  ], function (added, updated, removed) {
+    t.equals(added.length, 2, 'added count');
+    t.equals(updated.length, 1, 'updated count');
+    t.equals(removed.length, 1, 'removed count');
   });
 
   t.equals(document.body.innerHTML, '<p>1</p><p>2</p><p>3</p>');
