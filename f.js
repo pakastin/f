@@ -97,11 +97,7 @@
 
     this.lookup = newLookup;
 
-    cb && cb({
-      added: added,
-      updated: updated,
-      removed: removed
-    });
+    cb && cb(added, updated, removed);
 
     for (var i = 0; i < removed.length; i++) {
       var view = removed[i];
