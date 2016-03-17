@@ -18,6 +18,7 @@ npm install @pakastin/f
 - Replacing table data with inserts/removes: https://jsfiddle.net/pakastin/cbL56sz0/
 - Replacing table data: https://jsfiddle.net/pakastin/8ormrkf9/
 - [@teropa](http://github.com/teropa)'s Metacircles fork: http://pakastin.github.io/metacircles/
+- iOS homescreen with JavaScript: https://github.com/pakastin/homescreen (work in progress..)
 
 ## f.el(tagName, attributes, children...)
 Creates a HTML element:
