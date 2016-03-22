@@ -13,7 +13,7 @@ npm install @pakastin/f
 - Production: https://pakastin.github.io/f/f.min.js (2 KB)
 
 ## Some simple examples:
-- SVG clock: https://jsfiddle.net/pakastin/oyfm0vvd/
+- SVG clock: http://codepen.io/pakastin/pen/oxWNxy
 - Animating inserts/reorders/removes: https://jsfiddle.net/pakastin/a80srsmt/
 - Animating SVG: https://jsfiddle.net/pakastin/h2h36xm5/
 - Replacing table data with inserts/removes: https://jsfiddle.net/pakastin/cbL56sz0/
