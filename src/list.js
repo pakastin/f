@@ -17,7 +17,7 @@ List.prototype.update = function (data, cb) {
   var View = this.View;
   var key = this.key;
   var lookup = this.lookup;
-  var newLookup = {};
+  var newLookup = key != null ? {} : [];
   var views = this.views = new Array(data.length);
   var added = [];
   var updated = [];
