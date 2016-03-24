@@ -10,7 +10,7 @@
     "build": "rollup -n f -f umd src/index.js -o dist/f.js && npm run test",
     "uglify": "uglifyjs dist/f.js -cmo dist/f.min.js",
     "prepublish": "npm test",
-    "postpublish": "npm run deploy",
+    "postpublish": "git push --tags && npm run deploy",
     "test": "rollup -n f -f cjs src/index.js -o test/f.js | browserify -t coverify test/test.js | tape-run | coverify"
   },
   "author": "Juha Lindstedt",

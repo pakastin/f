@@ -90,7 +90,7 @@ test('list creation with key', function (t) {
 });
 
 test('list update', function (t) {
-  t.plan(2);
+  t.plan(5);
 
   var called = {};
 
@@ -110,7 +110,11 @@ test('list update', function (t) {
 
   list.update([ 5, 4, 6 ]);
 
-  list.update([ 3, 1 ]);
+  list.update([ 3, 1 ], function (added, updated, removed) {
+    t.equals(added.length, 0, 'added count');
+    t.equals(updated.length, 2, 'updated count');
+    t.equals(removed.length, 1, 'removed count');
+  });
 
   list.update([ 1, 2, 3 ]);
 

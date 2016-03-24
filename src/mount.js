@@ -2,13 +2,17 @@
 import { setChildren, List } from './index';
 
 export function mount (parent, child) {
+  var parentNode = parent.el || parent;
+  var childNode = child.el || child;
+
   if (child instanceof List) {
     child.parent = parent;
     setChildren(parent, child.views);
     return;
   }
   if (child.el) {
-    (parent.el || parent).appendChild(child.el);
+    parentNode.appendChild(childNode);
+
     if (child.parent) {
       child.reorder && child.reorder();
     } else {
@@ -16,30 +20,36 @@ export function mount (parent, child) {
     }
     child.parent = parent;
   } else {
-    (parent.el || parent).appendChild(child);
+    parentNode.appendChild(childNode);
   }
 }
 
 export function mountBefore (parent, child, before) {
+  var parentNode = parent.el || parent;
+  var childNode = child.el || child;
+  var beforeNode = before.el || before;
+
+  parentNode.insertBefore(childNode, beforeNode);
+
   if (child.el) {
-    (parent.el || parent).insertBefore(child.el, before.el || before);
     if (child.parent) {
       child.reorder && child.reorder();
     } else {
       child.mount && child.mount();
     }
+
     child.parent = parent;
-  } else {
-    (parent.el || parent).insertBefore(child, before.el || before);
   }
 }
 
 export function unmount (parent, child) {
+  var parentNode = parent.el || parent;
+  var childNode = child.el || child;
+
+  parentNode.removeChild(childNode);
+
   if (child.el) {
-    (parent.el || parent).removeChild(child.el);
     child.parent = null;
     child.unmount && child.unmount();
-  } else {
-    (parent.el || parent).removeChild(child);
   }
 }

@@ -8,20 +8,25 @@ export function list (View, key, initData) {
 export function List (View, key, initData) {
   this.View = View;
   this.key = key;
+  this.initData = initData;
+
   this.lookup = key != null ? {} : [];
   this.views = [];
-  this.initData = initData;
 }
 
 List.prototype.update = function (data, cb) {
   var View = this.View;
   var key = this.key;
   var lookup = this.lookup;
-  var newLookup = key != null ? {} : [];
-  var views = this.views = new Array(data.length);
+  var views = this.views;
+
+  var newLookup = key ? {} : [];
+
   var added = [];
   var updated = [];
   var removed = [];
+
+  views.length = data.length;
 
   for (var i = 0; i < data.length; i++) {
     var item = data[i];
@@ -30,6 +35,7 @@ List.prototype.update = function (data, cb) {
 
     if (!view) {
       view = new View(this.initData, item);
+
       added[added.length] = view;
     } else {
       updated[updated.length] = view;
@@ -44,8 +50,10 @@ List.prototype.update = function (data, cb) {
   for (var id in lookup) {
     if (!newLookup[id]) {
       var view = lookup[id];
-      removed[removed.length] = view;
+
       view.el.removing = true;
+
+      removed[removed.length] = view;
     }
   }
 
@@ -66,6 +74,7 @@ List.prototype.update = function (data, cb) {
 
   for (var i = 0; i < removed.length; i++) {
     var view = removed[i];
+    
     if (view.remove) {
       this.parent && scheduleRemove(this.parent, view);
     } else {
