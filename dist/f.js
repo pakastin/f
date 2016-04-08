@@ -8,13 +8,23 @@
     return document.createTextNode(str);
   }
 
-  function el (tagName) {
+  function el (tagName, attrs) {
     var element = document.createElement(tagName);
 
     for (var i = 1; i < arguments.length; i++) {
       var arg = arguments[i];
 
-      if (i === 1 && typeof arg !== 'string') {
+      if (arg == null) {
+        continue;
+      }
+
+      if (i > 1 || typeof arg === 'string' || ((arg.el || arg) instanceof Node)) {
+        if (typeof arg === 'string') {
+          mount(element, text(arg));
+        } else {
+          mount(element, arg);
+        }
+      } else if (i === 1) {
         for (var attr in arg) {
           if (element[attr] != null) {
             element[attr] = arg[attr];
@@ -22,13 +32,6 @@
             element.setAttribute(attr, arg[attr]);
           }
         }
-        continue;
-      }
-
-      if (typeof arg === 'string') {
-        mount(element, text(arg));
-      } else {
-        mount(element, arg);
       }
     }
 
@@ -41,17 +44,20 @@
     for (var i = 1; i < arguments.length; i++) {
       var arg = arguments[i];
 
-      if (i === 1 && typeof arg !== 'string') {
-        for (var attr in arg) {
-          element.setAttribute(attr, arg[attr]);
-        }
+      if (arg == null) {
         continue;
       }
 
-      if (typeof arg === 'string') {
-        mount(element, document.createTextNode(arg));
-      } else {
-        mount(element, arg);
+      if (i > 1 || typeof arg === 'string' || ((arg.el || arg) instanceof Node)) {
+        if (typeof arg === 'string') {
+          mount(element, text(arg));
+        } else {
+          mount(element, arg);
+        }
+      } else if (i === 1) {
+        for (var attr in arg) {
+          element.setAttribute(attr, arg[attr]);
+        }
       }
     }
 
