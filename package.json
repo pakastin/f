@@ -1,6 +1,6 @@
 {
   "name": "@pakastin/f",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "FRZR lite",
   "main": "dist/f.js",
   "jsnext:main": "src/index.js",
