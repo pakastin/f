@@ -10,10 +10,10 @@ test('element creation', function (t) {
   t.equals(hello.outerHTML, '<p>Hello world!</p>');
 });
 
-test('element with custom attribute', function (t) {
+test('element with text element and custom attribute', function (t) {
   t.plan(1);
 
-  var hello = f.el('p', { textContent: 'Hello world!', custom: 'a' });
+  var hello = f.el('p', { custom: 'a' }, 'Hello world!');
 
   t.equals(hello.outerHTML, '<p custom="a">Hello world!</p>');
 });
@@ -44,11 +44,12 @@ test('svg creation', function (t) {
 
   var circle = f.svg('circle', { cx: 0, cy: 0, r: 10 });
   var line = f.svg('line', { x1: 0, y1: 0, x2: 10, y2: 0 });
-  var svg = f.svg('svg', { width: 100, height: 100 }, circle, line);
+  var text = f.svg('text', 'Testing');
+  var svg = f.svg('svg', { width: 100, height: 100 }, circle, line, text);
 
   f.setChildren(document.body, [svg]);
 
-  t.equals(document.body.innerHTML, '<svg width="100" height="100"><circle cx="0" cy="0" r="10"></circle><line x1="0" y1="0" x2="10" y2="0"></line></svg>');
+  t.equals(document.body.innerHTML, '<svg width="100" height="100"><circle cx="0" cy="0" r="10"></circle><line x1="0" y1="0" x2="10" y2="0"></line><text>Testing</text></svg>');
 });
 
 test('list creation', function (t) {
