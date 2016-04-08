@@ -14,7 +14,7 @@
     for (var i = 1; i < arguments.length; i++) {
       var arg = arguments[i];
 
-      if (i === 1 && typeof arg === 'object') {
+      if (i === 1 && typeof arg !== 'string') {
         for (var attr in arg) {
           if (element[attr] != null) {
             element[attr] = arg[attr];
