@@ -1,4 +1,5 @@
 
+export * from './text';
 export * from './el';
 export * from './svg';
 export * from './list';

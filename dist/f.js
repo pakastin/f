@@ -4,6 +4,10 @@
   (factory((global.f = global.f || {})));
 }(this, function (exports) { 'use strict';
 
+  function text (str) {
+    return document.createTextNode(str);
+  }
+
   function el (tagName) {
     var element = document.createElement(tagName);
 
@@ -22,7 +26,7 @@
       }
 
       if (typeof arg === 'string') {
-        mount(element, document.createTextNode(arg));
+        mount(element, text(arg));
       } else {
         mount(element, arg);
       }
@@ -228,6 +232,7 @@
     }
   }
 
+  exports.text = text;
   exports.el = el;
   exports.svg = svg;
   exports.list = list;

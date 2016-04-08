@@ -1,5 +1,5 @@
 
-import { mount } from './index';
+import { text, mount } from './index';
 
 export function el (tagName) {
   var element = document.createElement(tagName);
@@ -19,7 +19,7 @@ export function el (tagName) {
     }
 
     if (typeof arg === 'string') {
-      mount(element, document.createTextNode(arg));
+      mount(element, text(arg));
     } else {
       mount(element, arg);
     }
