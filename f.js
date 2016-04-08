@@ -18,8 +18,10 @@
         continue;
       }
 
-      if (i > 1 || typeof arg === 'string' || ((arg.el || arg) instanceof Node)) {
-        if (typeof arg === 'string') {
+      var isString = typeof arg === 'string';
+
+      if ((i > 1) || isString || ((arg.el || arg) instanceof Node)) {
+        if (isString) {
           mount(element, text(arg));
         } else {
           mount(element, arg);
@@ -48,8 +50,10 @@
         continue;
       }
 
-      if (i > 1 || typeof arg === 'string' || ((arg.el || arg) instanceof Node)) {
-        if (typeof arg === 'string') {
+      var isString = typeof arg === 'string';
+
+      if ((i > 1) || isString || ((arg.el || arg) instanceof Node)) {
+        if (isString) {
           mount(element, text(arg));
         } else {
           mount(element, arg);
