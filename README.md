@@ -21,7 +21,7 @@ npm install @pakastin/f
 - [@teropa](http://github.com/teropa)'s Metacircles fork: http://pakastin.github.io/metacircles/
 - iOS homescreen with JavaScript: https://github.com/pakastin/homescreen (work in progress..)
 
-## f.el(tagName, attributes, children...)
+## f.el(tagName, (attributes), children...)
 Creates a HTML element:
 ```js
 var p = f.el('p', { textContent: 'Hello world!' });
@@ -29,6 +29,13 @@ var p = f.el('p', { textContent: 'Hello world!' });
 You can also define children:
 ```js
 var div = f.el('div', null, p);
+```
+You can also skip attributes:
+```js
+var p = f.el('p', 'Hello world!' );
+```
+```js
+var div = f.el('div', p);
 ```
 
 ## f.svg(tagName, attributes, children...)
